@@ -9,7 +9,7 @@ public class Notification : BaseEntity
     public Guid UserId { get; private set; }
     public User User { get; private set; }
 
-    public Notification()
+    private Notification()
     {
         // Required by EF
     }

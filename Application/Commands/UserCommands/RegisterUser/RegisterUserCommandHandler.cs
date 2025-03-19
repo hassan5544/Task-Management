@@ -28,7 +28,7 @@ public class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand, R
         }
         var user = Domain.Entities.User.Create(request.username, request.Email, request.Password, _passwordHasher);
         
-        await _userRepository.AddUserAsync(user);
+        await _userRepository.AddUserAsync(user , cancellationToken);
         await _unitOfWork.CommitAsync(cancellationToken);
         
         string token = _jwtTokenGenerator.GenerateToken(user.Id , user.Email,user.Username);

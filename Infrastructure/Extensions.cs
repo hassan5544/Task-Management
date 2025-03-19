@@ -13,6 +13,7 @@ public static class Extensions
     {
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
+        services.AddScoped<ITaskRepository, TaskRepository>();
 
         return services;
     }

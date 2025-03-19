@@ -9,8 +9,8 @@ public class User : BaseEntity
     public string Email { get; private set; }
     public string PasswordHash { get; private set; }
 
-    private readonly List<Task> _tasks = new();
-    public IReadOnlyCollection<Task> Tasks => _tasks.AsReadOnly();
+    private readonly List<TaskItem> _tasks = new();
+    public IReadOnlyCollection<TaskItem> Tasks => _tasks.AsReadOnly();
 
     private readonly List<Notification> _notifications = new();
     public IReadOnlyCollection<Notification> Notifications => _notifications.AsReadOnly();
@@ -44,7 +44,7 @@ public class User : BaseEntity
         return new User(username, email, passwordHasher.HashPassword(password));
     }
     
-    public void AssignTask(Task task)
+    public void AssignTask(TaskItem task)
     {
         _tasks.Add(task);
         _notifications.Add(Notification.Create($"Task '{task.Title}' assigned to you." , this));

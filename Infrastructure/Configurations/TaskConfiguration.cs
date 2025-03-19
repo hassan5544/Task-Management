@@ -1,11 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Infrastructure.Configurations;
 
-public class TaskConfiguration  : IEntityTypeConfiguration<Domain.Entities.Task>
+public class TaskConfiguration  : IEntityTypeConfiguration<TaskItem>
 {
-    public void Configure(EntityTypeBuilder<Domain.Entities.Task> builder)
+    public void Configure(EntityTypeBuilder<TaskItem> builder)
     {
         builder.HasKey(t => t.Id);
         builder.Property(t => t.Title).IsRequired().HasMaxLength(200);

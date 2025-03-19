@@ -7,11 +7,11 @@ using Microsoft.AspNetCore.Mvc;
 namespace WebApi.Controllers;
 [Route("api/[controller]")]
 [ApiController]
-public class Auth : ControllerBase
+public class AuthController : ControllerBase
 {
     private readonly IMediator _mediator;
 
-    public Auth(IMediator mediator)
+    public AuthController(IMediator mediator)
     {
         _mediator = mediator;
     }
