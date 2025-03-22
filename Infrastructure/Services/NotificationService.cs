@@ -1,4 +1,5 @@
-﻿using Domain.Entities;
+﻿using Application.Interfaces;
+using Domain.Entities;
 using Domain.Repositories;
 using Hangfire;
 using Microsoft.Extensions.Logging;
@@ -26,11 +27,11 @@ public class NotificationService : INotificationService
 
         await _notificationRepository.AddNotificationAsync(notification ,cancellationToken);
 
-        BackgroundJob.Enqueue(() => ProcessNotification(notification));
+        BackgroundJob.Enqueue(() => ProcessNotification(notification.UserId , notification.Message));
     }
-    public async Task ProcessNotification(Notification notification)
+    public async Task ProcessNotification(Guid userId, string message)
     {
-        _logger.LogInformation("Processing notification for User {UserId}: {Message}", notification.User.Id, notification.Message);
+        _logger.LogInformation("Processing notification for User {UserId}: {Message}", userId, message);
     }
 
 }

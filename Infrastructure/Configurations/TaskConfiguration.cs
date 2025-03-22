@@ -14,5 +14,9 @@ public class TaskConfiguration  : IEntityTypeConfiguration<TaskItem>
         builder.Property(t => t.Status)
             .HasConversion<int>() // Store enums as integers
             .IsRequired();
+        
+        builder.HasIndex(t => t.Status) 
+            .HasDatabaseName("ix_task_status"); 
+
     }
 }

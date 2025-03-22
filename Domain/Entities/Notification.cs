@@ -25,9 +25,5 @@ public class Notification : BaseEntity
     {
         return new Notification(message, user);
     }
-    
-    public void MarkAsRead()
-    {
-        IsRead = true;
-    }
+
 }

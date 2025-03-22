@@ -1,4 +1,6 @@
-﻿using Domain.Enums;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
+using Domain.Enums;
 using Domain.Shared;
 
 namespace Domain.Entities;
@@ -9,7 +11,9 @@ public class TaskItem : BaseEntity
     public string Description { get; private set; }
     public TaskStatusEnum Status { get; private set; }
     public Guid? AssignedUserId { get; private set; }
+    [JsonIgnore] 
     public User? AssignedUser { get; private set; }
+    
 
     private TaskItem()
     {
@@ -36,7 +40,7 @@ public class TaskItem : BaseEntity
 
         AssignedUser = user;
         AssignedUserId = user.Id;
-        user.AssignTask(this);
+        //user.AssignTask(this);
     }
 
     public void MarkAsCompleted()

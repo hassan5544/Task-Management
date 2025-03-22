@@ -4,4 +4,4 @@ using MediatR;
 
 namespace Application.Queries.GetPendingTasks;
 
-public record GetPendingTasksQuery() : IRequest<List<TaskDto>>;
+public record GetPendingTasksQuery(int pageNumber, int pageSize) : IRequest<List<TaskDto>>;

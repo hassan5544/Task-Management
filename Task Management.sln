@@ -14,6 +14,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastru
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helpers", "Helpers\Helpers.csproj", "{54E476D0-D885-4CD6-BA91-D4A865C16318}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManagement.Tests", "TaskManagement.Tests\TaskManagement.Tests.csproj", "{EBF7B44E-F2F7-4AC7-A66F-E79BE4838C41}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{82AAD323-DC25-42EE-B6EB-FAC77B0D9D6B}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yaml = docker-compose.yaml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,6 +47,10 @@ Global
 		{54E476D0-D885-4CD6-BA91-D4A865C16318}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54E476D0-D885-4CD6-BA91-D4A865C16318}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54E476D0-D885-4CD6-BA91-D4A865C16318}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBF7B44E-F2F7-4AC7-A66F-E79BE4838C41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBF7B44E-F2F7-4AC7-A66F-E79BE4838C41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBF7B44E-F2F7-4AC7-A66F-E79BE4838C41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBF7B44E-F2F7-4AC7-A66F-E79BE4838C41}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{C13A0FB3-C5CA-437E-80AF-51FEC6AACD73} = {A97A0552-758E-4BA9-91D1-C6C8576AF8CF}
@@ -47,5 +58,6 @@ Global
 		{CB955687-2C93-4C5A-B8D4-304FF26048FA} = {A97A0552-758E-4BA9-91D1-C6C8576AF8CF}
 		{25664A5D-8049-4531-B009-543B55D9EE59} = {A97A0552-758E-4BA9-91D1-C6C8576AF8CF}
 		{54E476D0-D885-4CD6-BA91-D4A865C16318} = {A97A0552-758E-4BA9-91D1-C6C8576AF8CF}
+		{EBF7B44E-F2F7-4AC7-A66F-E79BE4838C41} = {F95CEBA8-6FAE-4356-823E-1D33297EC155}
 	EndGlobalSection
 EndGlobal

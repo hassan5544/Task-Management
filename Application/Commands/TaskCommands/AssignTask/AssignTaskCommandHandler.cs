@@ -1,19 +1,24 @@
-﻿using Domain.Repositories;
+﻿using Application.Interfaces;
+using Domain.Repositories;
+using MediatR;
 using Microsoft.Extensions.Logging;
 
 namespace Application.Commands.TaskCommands.AssignTask;
 
-public class AssignTaskCommandHandler
+public class AssignTaskCommandHandler : IRequestHandler<AssignTaskCommand>
 {
     private readonly ITaskRepository _taskRepository;
     private readonly IUserRepository _userRepository;
     private readonly ILogger<AssignTaskCommandHandler> _logger;
+    private readonly INotificationService _notificationService;
+
     
-    public AssignTaskCommandHandler(ITaskRepository taskRepository, IUserRepository userRepository , ILogger<AssignTaskCommandHandler> logger)
+    public AssignTaskCommandHandler(ITaskRepository taskRepository, IUserRepository userRepository , ILogger<AssignTaskCommandHandler> logger , INotificationService notificationService)
     {
         _taskRepository = taskRepository;
         _userRepository = userRepository;
         _logger = logger;
+        _notificationService = notificationService;
     }
     
     public async Task Handle(AssignTaskCommand request, CancellationToken cancellationToken)
@@ -35,5 +40,7 @@ public class AssignTaskCommandHandler
         }
 
         await _taskRepository.AssignTaskAsync(task, user ,cancellationToken);
+        await _notificationService.SendNotificationAsync(request.UserId, $"You have been assigned a new task: {task.Title}" , cancellationToken);
+
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace Infrastructure.Services;
+﻿namespace Application.Interfaces;
 
 public interface INotificationService
 {

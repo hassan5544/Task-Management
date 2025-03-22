@@ -1,0 +1,30 @@
+﻿version: '3.8'
+
+services:
+  db:
+    image: postgres:latest
+    container_name: taskmanagement_db
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: TaskManagementDb
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  api:
+    build:
+      context: .
+      dockerfile: WebApi/Dockerfile
+    container_name: taskmanagement_api
+    depends_on:
+      - db
+    environment:
+      - ConnectionStrings__DefaultConnection=Host=db;Database=TaskManagementDb;Username=admin;Password=secret
+    ports:
+      - "8080:8080"
+    restart: always
+
+volumes:
+  pgdata:

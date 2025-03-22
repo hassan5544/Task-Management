@@ -58,7 +58,7 @@ namespace Infrastructure.Migrations
                     b.ToTable("Notifications");
                 });
 
-            modelBuilder.Entity("Domain.Entities.Task", b =>
+            modelBuilder.Entity("Domain.Entities.TaskItem", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -95,6 +95,9 @@ namespace Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("AssignedUserId");
+
+                    b.HasIndex("Status")
+                        .HasDatabaseName("ix_task_status");
 
                     b.ToTable("Tasks");
                 });
@@ -147,7 +150,7 @@ namespace Infrastructure.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Domain.Entities.Task", b =>
+            modelBuilder.Entity("Domain.Entities.TaskItem", b =>
                 {
                     b.HasOne("Domain.Entities.User", "AssignedUser")
                         .WithMany("Tasks")

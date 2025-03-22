@@ -1,6 +1,8 @@
-﻿namespace Application.Commands.TaskCommands.AssignTask;
+﻿using MediatR;
 
-public class AssignTaskCommand
+namespace Application.Commands.TaskCommands.AssignTask;
+
+public class AssignTaskCommand : IRequest
 {
     public Guid TaskId { get; set; }
     public Guid UserId { get; set; }

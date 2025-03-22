@@ -1,8 +1,8 @@
-﻿using Domain.Repositories;
-using Infrastructure.Persistence;
+﻿using Application.Interfaces;
+using Domain.Repositories;
 using Infrastructure.Repositories;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
+using Infrastructure.Services;
+
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Infrastructure;
@@ -14,7 +14,8 @@ public static class Extensions
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped<ITaskRepository, TaskRepository>();
-
+        services.AddScoped<INotificationService , NotificationService>();
+        services.AddScoped<INotificationRepository, NotificationRepository>();
         return services;
     }
 }

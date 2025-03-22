@@ -57,15 +57,19 @@ public class TaskRepository : ITaskRepository
     public async Task AssignTaskAsync(TaskItem task, User user  , CancellationToken cancellationToken)
     {
         task.AssignTo(user);
-        _context.Tasks.Update(task);
+        _context.Tasks.Attach(task);
         await _unitOfWork.CommitAsync(cancellationToken);    
     }
     
-    public  async Task<List<TaskItem>> GetPendingTasksAsync()
+    public  async Task<List<TaskItem>> GetPendingTasksAsync(int pageNumber, int pageSize)
     {
-        var query = _context.Tasks.Where(x =>  x.Status != TaskStatusEnum.Completed);
-        
-        var result = await query.ToListAsync();
+        var result = await _context.Tasks
+            .Where(t => t.Status == TaskStatusEnum.Pending)
+            .OrderBy(t => t.InsertDate)
+            .Skip((pageNumber - 1) * pageSize)
+            .Take(pageSize)
+            .AsNoTracking() // Disable EF tracking for better performance
+            .ToListAsync();
         
         if(result == null)
         {

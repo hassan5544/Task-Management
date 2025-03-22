@@ -26,7 +26,7 @@ public class NotificationRepository : INotificationRepository
 
     public Task<List<Notification>> GetNotificationsByUserIdAsync(Guid userId)
     {
-        return _context.Notifications.Where(x => x.UserId == userId).ToListAsync();
+        return _context.Notifications.Where(x => x.UserId == userId).OrderByDescending(n => n.InsertDate).ToListAsync();
         
     }
 }

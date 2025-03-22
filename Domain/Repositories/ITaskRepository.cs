@@ -18,6 +18,6 @@ public interface ITaskRepository
     
     public Task AssignTaskAsync(TaskItem task, User user , CancellationToken cancellationToken);
     
-    public Task<List<TaskItem>> GetPendingTasksAsync();
+    public Task<List<TaskItem>> GetPendingTasksAsync(int pageNumber, int pageSize);
     
 }

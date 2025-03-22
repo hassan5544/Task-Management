@@ -15,7 +15,7 @@ public class GetPendingTasksQueryHandler :  IRequestHandler<GetPendingTasksQuery
     
     public async Task<List<TaskDto>> Handle(GetPendingTasksQuery request, CancellationToken cancellationToken)
     {
-        var tasks = await _taskRepository.GetPendingTasksAsync();
+        var tasks = await _taskRepository.GetPendingTasksAsync(request.pageNumber , request.pageSize);
         return tasks.Select(t => new TaskDto
         {
             Id = t.Id,

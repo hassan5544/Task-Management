@@ -44,12 +44,6 @@ public class User : BaseEntity
         return new User(username, email, passwordHasher.HashPassword(password));
     }
     
-    public void AssignTask(TaskItem task)
-    {
-        _tasks.Add(task);
-        _notifications.Add(Notification.Create($"Task '{task.Title}' assigned to you." , this));
-    }
-    
     public bool VerifyPassword(string password, IPasswordHasher passwordHasher)
     {
         if (string.IsNullOrWhiteSpace(password))

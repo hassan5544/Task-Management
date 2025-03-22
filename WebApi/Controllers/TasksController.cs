@@ -43,9 +43,9 @@ public class TasksController : ControllerBase
     }
 
     [HttpGet("pending")]
-    public async Task<IActionResult> GetPendingTasks()
+    public async Task<IActionResult> GetPendingTasks(int pageNumber , int pageSize)
     {
-        var tasks = await _mediator.Send(new GetPendingTasksQuery());
+        var tasks = await _mediator.Send(new GetPendingTasksQuery(pageNumber, pageSize));
         return Ok(tasks);
     }
 }
